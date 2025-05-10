@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Logo from "@/components/Logo";
 import "./globals.css";
+import { NavMenu } from "@/components/NavMenu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,7 +30,24 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-100`}
         cz-shortcut-listen="true"
       >
-        {children}
+        <header className="bg-gray-800 py-5">
+          <div className="max-w-screen-2xl mx-auto flex flex-col lg:flex-row justify-between items-center">
+            <div className="relative w-64 h-16">
+              <Logo />
+            </div>
+            <NavMenu />
+          </div>
+        </header>
+
+        <section className="max-w-screen-2xl mx-auto mt-10 p-5">
+          {children}
+        </section>
+
+        <footer className="py-5">
+          <p className="text-center">
+            © Todos los derechos reservados {new Date().getFullYear()}
+          </p>
+        </footer>
       </body>
     </html>
   );
