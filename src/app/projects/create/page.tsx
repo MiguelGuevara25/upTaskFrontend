@@ -2,10 +2,13 @@
 import ProjectForm from "@/components/projects/ProjectForm";
 import { ProjectFormData } from "@/interfaces";
 import Link from "next/link";
-import React from "react";
 import { useForm } from "react-hook-form";
+import { createProject } from "@/api/ProjectAPI";
+import { useRouter } from "next/navigation";
 
 export default function CreateProject() {
+  const router = useRouter();
+
   const initialValues: ProjectFormData = {
     projectName: "",
     clientName: "",
@@ -18,8 +21,9 @@ export default function CreateProject() {
     formState: { errors },
   } = useForm({ defaultValues: initialValues });
 
-  const handleForm = (data: ProjectFormData) => {
-    console.log(data);
+  const handleForm = async (data: ProjectFormData) => {
+    await createProject(data);
+    router.push("/");
   };
 
   return (

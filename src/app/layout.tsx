@@ -46,7 +46,7 @@ export default function RootLayout({
 
         <footer className="py-5">
           <p className="text-center">
-            © Todos los derechos reservados {new Date().getFullYear()}
+            © Todos los derechos reservados 2025
           </p>
         </footer>
       </body>
