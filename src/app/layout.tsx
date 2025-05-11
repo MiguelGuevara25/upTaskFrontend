@@ -3,6 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Logo from "@/components/Logo";
 import "./globals.css";
 import { NavMenu } from "@/components/NavMenu";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,10 +47,10 @@ export default function RootLayout({
         </section>
 
         <footer className="py-5">
-          <p className="text-center">
-            © Todos los derechos reservados 2025
-          </p>
+          <p className="text-center">© Todos los derechos reservados 2025</p>
         </footer>
+
+        <ToastContainer pauseOnFocusLoss={false} pauseOnHover={false} />
       </body>
     </html>
   );

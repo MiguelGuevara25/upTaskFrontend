@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { createProject } from "@/api/ProjectAPI";
 import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
 
 export default function CreateProject() {
   const router = useRouter();
@@ -21,8 +22,9 @@ export default function CreateProject() {
     formState: { errors },
   } = useForm({ defaultValues: initialValues });
 
-  const handleForm = async (data: ProjectFormData) => {
-    await createProject(data);
+  const handleForm = async (formData: ProjectFormData) => {
+    const data = await createProject(formData);
+    toast.success(data);
     router.push("/");
   };
 
