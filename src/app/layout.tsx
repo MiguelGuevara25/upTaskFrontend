@@ -35,6 +35,7 @@ export default function RootLayout({
             <div className="relative w-64 h-16">
               <Logo />
             </div>
+
             <NavMenu />
           </div>
         </header>

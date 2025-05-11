@@ -36,7 +36,7 @@ export const NavMenu = () => {
             <button
               className="block p-2 hover:text-purple-950"
               type="button"
-              onClick={() => {}}
+              // onClick={() => {}}
             >
               Cerrar Sesión
             </button>
