@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { createProject } from "@/api/ProjectAPI";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
+import { useMutation } from "@tanstack/react-query";
 
 export default function CreateProject() {
   const router = useRouter();
@@ -22,11 +23,18 @@ export default function CreateProject() {
     formState: { errors },
   } = useForm({ defaultValues: initialValues });
 
-  const handleForm = async (formData: ProjectFormData) => {
-    const data = await createProject(formData);
-    toast.success(data);
-    router.push("/");
-  };
+  const { mutate } = useMutation({
+    mutationFn: createProject,
+    onError: () => {
+      toast.error("Error al crear el proyecto");
+    },
+    onSuccess: (data) => {
+      toast.success(data);
+      router.push("/");
+    },
+  });
+
+  const handleForm = (formData: ProjectFormData) => mutate(formData);
 
   return (
     <>

@@ -5,6 +5,7 @@ import "./globals.css";
 import { NavMenu } from "@/components/NavMenu";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Providers from "./providers";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,7 +44,7 @@ export default function RootLayout({
         </header>
 
         <section className="max-w-screen-2xl mx-auto mt-10 p-5">
-          {children}
+          <Providers>{children}</Providers>
         </section>
 
         <footer className="py-5">
